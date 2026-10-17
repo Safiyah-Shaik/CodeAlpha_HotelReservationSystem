@@ -1,0 +1,1078 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#10283f">
+    <title>Hotel Paradise | Your Perfect Stay</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #10283f;
+            --navy-light: #1b3a55;
+            --gold: #d9ad68;
+            --cream: #fbf8f2;
+            --teal: #087b6b;
+            --text: #24384b;
+            --muted: #6c7b8a;
+            --white: #ffffff;
+            --border: #e1e7ed;
+            --shadow: 0 14px 40px #10283f12;
+        }
+
+        * { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            margin: 0;
+            font-family: "DM Sans", sans-serif;
+            color: var(--text);
+            background: #f5f7fa;
+            line-height: 1.6;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        button, input, select {
+            font: inherit;
+        }
+
+        button, a, input, select {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: var(--navy);
+            color: white;
+            box-shadow: 0 4px 20px #0002;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            min-height: 76px;
+            padding: 12px 24px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .brand-icon {
+            color: var(--gold);
+            font-size: 35px;
+        }
+
+        .brand-name {
+            font-family: "Playfair Display", serif;
+            font-size: 23px;
+            line-height: 1.2;
+        }
+
+        .brand-tagline {
+            color: #d3dce4;
+            font-size: 11px;
+            letter-spacing: .6px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            padding: 9px 16px;
+            border: 1px solid var(--gold);
+            border-radius: 30px;
+            color: #f6d49d;
+        }
+
+        .hero {
+            min-height: 390px;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(90deg, #071b2be8 0%, #10283fb8 45%, #10283f15 100%),
+                url("https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=2000&q=85")
+                center 55% / cover no-repeat;
+            color: white;
+        }
+
+        .hero-inner {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 60px 24px;
+        }
+
+        .eyebrow {
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            max-width: 650px;
+            margin: 14px 0;
+            font: 600 clamp(38px, 5vw, 60px)/1.12 "Playfair Display", serif;
+        }
+
+        .hero p {
+            max-width: 530px;
+            color: #e5ebf0;
+            font-size: 17px;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px;
+            margin-top: 28px;
+            color: #f5e6cc;
+            font-size: 13px;
+        }
+
+        .hero-features span::before {
+            content: "✦";
+            color: var(--gold);
+            margin-right: 8px;
+        }
+
+        .section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 64px 24px;
+        }
+
+        .section-heading {
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .section-heading h2 {
+            margin: 7px 0;
+            color: var(--navy);
+            font: 600 clamp(28px, 4vw, 38px) "Playfair Display", serif;
+        }
+
+        .section-heading p {
+            margin: 8px auto 0;
+            color: var(--muted);
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .room-card {
+            overflow: hidden;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .room-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 35px #10283f1c;
+        }
+
+        .room-card img {
+            display: block;
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            background: #e6ebef;
+        }
+
+        .room-content { padding: 20px; }
+
+        .room-content h3 {
+            margin: 0;
+            color: var(--navy);
+            font: 600 23px "Playfair Display", serif;
+        }
+
+        .room-content p {
+            min-height: 48px;
+            margin: 9px 0;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .room-price {
+            color: var(--teal);
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .room-price small {
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        .select-room {
+            width: 100%;
+            margin-top: 15px;
+            padding: 11px;
+            border: 1px solid var(--navy);
+            border-radius: 7px;
+            background: white;
+            color: var(--navy);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .select-room:hover {
+            background: var(--navy);
+            color: white;
+        }
+
+        .booking-section {
+            padding: 65px 20px;
+            background:
+                radial-gradient(ellipse at top, #e5edf4 0%, transparent 65%),
+                #f5f7fa;
+        }
+
+        .booking-card {
+            max-width: 820px;
+            margin: auto;
+            padding: clamp(22px, 5vw, 44px);
+            border: 1px solid #e5ebf1;
+            border-radius: 18px;
+            background: white;
+            box-shadow: 0 15px 45px #10283f12;
+        }
+
+        .booking-title {
+            margin: 8px 0;
+            color: var(--navy);
+            text-align: center;
+            font: 600 clamp(27px, 4vw, 36px) "Playfair Display", serif;
+        }
+
+        .booking-subtitle {
+            margin: 0 0 30px;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .field { min-width: 0; }
+        .field.full { grid-column: 1 / -1; }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--navy);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        input, select {
+            width: 100%;
+            min-height: 49px;
+            padding: 12px 13px;
+            border: 1px solid #ccd7e2;
+            border-radius: 8px;
+            background: #fff;
+            color: var(--text);
+            outline: none;
+            transition: border-color .2s, box-shadow .2s;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--teal);
+            box-shadow: 0 0 0 3px #087b6b18;
+        }
+
+        .estimate {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-top: 24px;
+            padding: 18px;
+            border: 1px solid #dce9e5;
+            border-radius: 10px;
+            background: #f0f8f5;
+        }
+
+        .estimate-label {
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .estimate-note {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .estimate-price {
+            color: var(--teal);
+            font-size: clamp(22px, 4vw, 29px);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .primary-btn {
+            width: 100%;
+            min-height: 52px;
+            margin-top: 22px;
+            padding: 13px 20px;
+            border: 0;
+            border-radius: 8px;
+            background: var(--teal);
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .2s, transform .2s;
+        }
+
+        .primary-btn:hover {
+            background: #066456;
+            transform: translateY(-1px);
+        }
+
+        .primary-btn:disabled {
+            opacity: .65;
+            cursor: wait;
+            transform: none;
+        }
+
+        .message {
+            display: none;
+            margin-top: 18px;
+            padding: 15px;
+            border-radius: 9px;
+            overflow-wrap: anywhere;
+            font-size: 14px;
+        }
+
+        .message.success {
+            display: block;
+            border: 1px solid #b9e5d7;
+            background: #eefaf5;
+            color: #086b54;
+        }
+
+        .message.error {
+            display: block;
+            border: 1px solid #f2caca;
+            background: #fff3f3;
+            color: #a52a2a;
+        }
+
+        .bookings-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .booking-item {
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 5px 16px #10283f08;
+        }
+
+        .booking-item h3 {
+            margin: 0 0 7px;
+            color: var(--navy);
+        }
+
+        .booking-item p {
+            margin: 4px 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .empty-state {
+            padding: 25px;
+            border: 1px dashed #cbd6df;
+            border-radius: 10px;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .about-panel {
+            padding: 30px;
+            border-radius: 14px;
+            background: var(--navy);
+            color: white;
+            text-align: center;
+        }
+
+        .about-panel h2 {
+            margin-top: 0;
+            font: 600 30px "Playfair Display", serif;
+        }
+
+        .about-panel p {
+            max-width: 650px;
+            margin: auto;
+            color: #d9e2e9;
+        }
+
+        footer {
+            padding: 28px 20px;
+            background: #0a1e30;
+            color: #c7d2dc;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        footer strong {
+            color: var(--gold);
+            font: 600 21px "Playfair Display", serif;
+        }
+
+        @media (max-width: 760px) {
+            .nav-inner {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .brand { margin-right: auto; }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+                font-size: 12px;
+            }
+
+            .nav-cta { font-size: 12px; }
+
+            .hero { min-height: 360px; }
+
+            .hero-inner { padding: 48px 22px; }
+
+            .rooms-grid { grid-template-columns: 1fr; }
+
+            .room-card {
+                display: grid;
+                grid-template-columns: minmax(110px, 38%) 1fr;
+            }
+
+            .room-card img { height: 100%; min-height: 210px; }
+
+            .room-content p { min-height: 0; }
+
+            .form-grid { grid-template-columns: 1fr; }
+
+            .field.full { grid-column: auto; }
+
+            .section { padding: 45px 18px; }
+
+            .booking-section { padding: 42px 14px; }
+        }
+
+        @media (max-width: 400px) {
+            .brand-name { font-size: 19px; }
+            .brand-icon { font-size: 29px; }
+            .nav-links { gap: 11px; }
+            .room-card { grid-template-columns: 1fr; }
+            .room-card img { height: 180px; min-height: 0; }
+            .estimate { align-items: flex-start; flex-direction: column; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<header class="navbar">
+    <div class="nav-inner">
+        <a class="brand" href="#home" aria-label="Hotel Paradise home">
+            <span class="brand-icon" aria-hidden="true">▰</span>
+            <span>
+                <span class="brand-name">Hotel Paradise</span><br>
+                <span class="brand-tagline">Stay · Relax · Feel at Home</span>
+            </span>
+        </a>
+
+        <nav class="nav-links" aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#rooms">Rooms</a>
+            <a href="#booking">Reserve</a>
+            <a href="#my-bookings">Bookings</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <a class="nav-cta" href="#my-bookings">My Bookings ↗</a>
+    </div>
+</header>
+
+<main>
+    <section class="hero" id="home">
+        <div class="hero-inner">
+            <div class="eyebrow">A better way to stay</div>
+            <h1>Welcome to Your Perfect Getaway</h1>
+            <p>
+                Discover thoughtful comfort, beautiful rooms and warm hospitality.
+                Your next memorable stay starts here.
+            </p>
+
+            <div class="hero-features">
+                <span>Comfortable rooms</span>
+                <span>Easy reservations</span>
+                <span>Personal comfort</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="rooms">
+        <div class="section-heading">
+            <div class="eyebrow">Find your comfort</div>
+            <h2>Rooms Made for You</h2>
+            <p>Choose the room that suits your stay and your budget.</p>
+        </div>
+
+        <div class="rooms-grid">
+            <article class="room-card">
+                <img
+                    src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80"
+                    alt="Comfortable hotel bedroom"
+                    loading="lazy">
+                <div class="room-content">
+                    <h3>Standard Room</h3>
+                    <p>A welcoming, comfortable space for a relaxing stay.</p>
+                    <div class="room-price">₹2,000 <small>/ night</small></div>
+                    <button class="select-room" type="button" data-room="Standard">
+                        Choose Standard
+                    </button>
+                </div>
+            </article>
+
+            <article class="room-card">
+                <img
+                    src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80"
+                    alt="Elegant deluxe hotel room"
+                    loading="lazy">
+                <div class="room-content">
+                    <h3>Deluxe Room</h3>
+                    <p>Extra space and an elevated experience for your getaway.</p>
+                    <div class="room-price">₹3,500 <small>/ night</small></div>
+                    <button class="select-room" type="button" data-room="Deluxe">
+                        Choose Deluxe
+                    </button>
+                </div>
+            </article>
+
+            <article class="room-card">
+                <img
+                    src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80"
+                    alt="Spacious premium hotel suite"
+                    loading="lazy">
+                <div class="room-content">
+                    <h3>Luxury Suite</h3>
+                    <p>More room to unwind, relax and enjoy a special stay.</p>
+                    <div class="room-price">₹5,000 <small>/ night</small></div>
+                    <button class="select-room" type="button" data-room="Suite">
+                        Choose Suite
+                    </button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="booking-section" id="booking">
+        <div class="booking-card">
+            <div class="section-heading">
+                <div class="eyebrow">Your stay begins here</div>
+                <h2 class="booking-title">Room Reservation</h2>
+                <p class="booking-subtitle">
+                    Enter your details to calculate your estimated stay cost.
+                </p>
+            </div>
+
+            <form id="bookingForm">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="guestName">Guest Name</label>
+                        <input
+                            type="text"
+                            id="guestName"
+                            name="guestName"
+                            placeholder="Enter your full name"
+                            minlength="2"
+                            maxlength="100"
+                            autocomplete="name"
+                            required>
+                    </div>
+
+                    <div class="field">
+                        <label for="roomType">Select Room</label>
+                        <select id="roomType" name="roomType" required>
+                            <option value="">Choose a room</option>
+                            <option value="Standard">Standard — ₹2,000/night</option>
+                            <option value="Deluxe">Deluxe — ₹3,500/night</option>
+                            <option value="Suite">Suite — ₹5,000/night</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="checkIn">Check-in Date</label>
+                        <input type="date" id="checkIn" name="checkIn" required>
+                    </div>
+
+                    <div class="field">
+                        <label for="checkOut">Check-out Date</label>
+                        <input type="date" id="checkOut" name="checkOut" required>
+                    </div>
+                </div>
+
+                <div class="estimate" aria-live="polite">
+                    <div>
+                        <div class="estimate-label">Estimated Total</div>
+                        <div class="estimate-note" id="estimateNote">
+                            Choose a room and your dates to see the estimate.
+                        </div>
+                    </div>
+                    <div class="estimate-price" id="estimatePrice">₹0</div>
+                </div>
+
+                <button class="primary-btn" id="submitButton" type="submit">
+                    Check Booking Details →
+                </button>
+
+                <div
+                    class="message"
+                    id="message"
+                    role="status"
+                    aria-live="polite">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="section" id="my-bookings">
+        <div class="section-heading">
+            <div class="eyebrow">Stay organised</div>
+            <h2>Your Reservations</h2>
+            <p>View bookings currently available from the reservation service.</p>
+        </div>
+
+        <div class="bookings-list" id="bookingsList">
+            <div class="empty-state">Select “Refresh Bookings” to load reservations.</div>
+        </div>
+
+        <button class="primary-btn" id="refreshBookings" type="button">
+            ↻ Refresh Bookings
+        </button>
+    </section>
+
+    <section class="section" id="about">
+        <div class="about-panel">
+            <h2>A Stay to Remember</h2>
+            <p>
+                Hotel Paradise is designed around a simple idea:
+                make planning your stay easy, comfortable and welcoming.
+                Explore your room options and reserve your next stay with confidence.
+            </p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <strong>Hotel Paradise</strong>
+    <p>Stay · Relax · Feel at Home</p>
+    <p>© <span id="year"></span> Hotel Paradise. All rights reserved.</p>
+    <p>Reservation confirmation does not represent a payment confirmation.</p>
+</footer>
+
+<script>
+    const form = document.getElementById("bookingForm");
+    const guestNameInput = document.getElementById("guestName");
+    const roomTypeInput = document.getElementById("roomType");
+    const checkInInput = document.getElementById("checkIn");
+    const checkOutInput = document.getElementById("checkOut");
+    const message = document.getElementById("message");
+    const submitButton = document.getElementById("submitButton");
+    const estimatePrice = document.getElementById("estimatePrice");
+    const estimateNote = document.getElementById("estimateNote");
+    const bookingsList = document.getElementById("bookingsList");
+
+    const roomPrices = {
+        Standard: 2000,
+        Deluxe: 3500,
+        Suite: 5000
+    };
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function localDateString(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const day = String(date.getDate()).padStart(2, "0");
+        return `${year}-${month}-${day}`;
+    }
+
+    function setMessage(text, type) {
+        message.textContent = text;
+        message.className = "message " + type;
+    }
+
+    function clearMessage() {
+        message.textContent = "";
+        message.className = "message";
+    }
+
+    function getStayNights() {
+        const checkIn = checkInInput.value;
+        const checkOut = checkOutInput.value;
+
+        if (!checkIn || !checkOut) return 0;
+
+        const start = new Date(checkIn + "T00:00:00Z");
+        const end = new Date(checkOut + "T00:00:00Z");
+        const nights = (end - start) / 86400000;
+
+        return Number.isFinite(nights) && nights > 0 ? nights : 0;
+    }
+
+    function updateEstimate() {
+        const nights = getStayNights();
+        const room = roomTypeInput.value;
+        const price = roomPrices[room];
+
+        if (nights > 0 && price) {
+            estimatePrice.textContent =
+                "₹" + (nights * price).toLocaleString("en-IN");
+
+            estimateNote.textContent =
+                nights + (nights === 1 ? " night" : " nights") +
+                " × ₹" + price.toLocaleString("en-IN") + " per night";
+        } else {
+            estimatePrice.textContent = "₹0";
+            estimateNote.textContent =
+                "Choose a room and valid dates to see the estimate.";
+        }
+    }
+
+    function updateDateLimits() {
+        const today = localDateString(new Date());
+        checkInInput.min = today;
+
+        if (checkInInput.value) {
+            checkOutInput.min = checkInInput.value;
+        } else {
+            checkOutInput.min = today;
+        }
+
+        updateEstimate();
+    }
+
+    checkInInput.addEventListener("change", () => {
+        updateDateLimits();
+
+        if (
+            checkInInput.value &&
+            checkOutInput.value &&
+            checkOutInput.value <= checkInInput.value
+        ) {
+            checkOutInput.value = "";
+        }
+
+        clearMessage();
+        updateEstimate();
+    });
+
+    checkOutInput.addEventListener("change", () => {
+        clearMessage();
+        updateEstimate();
+    });
+
+    roomTypeInput.addEventListener("change", () => {
+        clearMessage();
+        updateEstimate();
+    });
+
+    document.querySelectorAll(".select-room").forEach(button => {
+        button.addEventListener("click", () => {
+            roomTypeInput.value = button.dataset.room;
+            updateEstimate();
+            document.getElementById("booking").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+    });
+
+    form.addEventListener("submit", async event => {
+        event.preventDefault();
+        clearMessage();
+
+        const name = guestNameInput.value.trim();
+        const room = roomTypeInput.value;
+        const checkIn = checkInInput.value;
+        const checkOut = checkOutInput.value;
+
+        if (name.length < 2) {
+            setMessage("Please enter a valid guest name.", "error");
+            guestNameInput.focus();
+            return;
+        }
+
+        if (!roomPrices[room]) {
+            setMessage("Please choose a valid room type.", "error");
+            roomTypeInput.focus();
+            return;
+        }
+
+        const today = localDateString(new Date());
+
+        if (!checkIn || checkIn < today) {
+            setMessage("Check-in date cannot be in the past.", "error");
+            checkInInput.focus();
+            return;
+        }
+
+        if (!checkOut || checkOut <= checkIn) {
+            setMessage("Check-out date must be after check-in.", "error");
+            checkOutInput.focus();
+            return;
+        }
+
+        const nights = getStayNights();
+
+        if (!nights) {
+            setMessage("Please choose valid check-in and check-out dates.", "error");
+            return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Saving your reservation...";
+
+        try {
+            const response = await fetch("/api/bookings", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    guestName: name,
+                    roomType: room,
+                    checkIn: checkIn,
+                    checkOut: checkOut
+                })
+            });
+
+            if (!response.ok) {
+                let errorText = "Booking could not be saved.";
+
+                try {
+                    const errorBody = await response.json();
+                    if (errorBody.message) errorText = errorBody.message;
+                } catch (_) {
+                    // Keep the default error message.
+                }
+
+                throw new Error(errorText);
+            }
+
+            const booking = await response.json();
+            const total = Number(booking.totalPrice);
+
+            setMessage(
+                "Booking saved successfully! Guest: " +
+                booking.guestName +
+                " | Room: " + booking.roomType +
+                " | Total: ₹" +
+                (Number.isFinite(total) ? total.toLocaleString("en-IN") : "—") +
+                ". This is not a payment confirmation.",
+                "success"
+            );
+
+            await loadBookings();
+        } catch (error) {
+            setMessage(
+                error.message ||
+                "Could not save booking. Please check the server and try again.",
+                "error"
+            );
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = "Check Booking Details →";
+        }
+    });
+
+    async function loadBookings() {
+        bookingsList.replaceChildren();
+
+        const loading = document.createElement("div");
+        loading.className = "empty-state";
+        loading.textContent = "Loading bookings...";
+        bookingsList.appendChild(loading);
+
+        try {
+            const response = await fetch("/api/bookings");
+
+            if (!response.ok) {
+                throw new Error("Unable to load bookings.");
+            }
+
+            const bookings = await response.json();
+            bookingsList.replaceChildren();
+
+            if (!Array.isArray(bookings) || bookings.length === 0) {
+                const empty = document.createElement("div");
+                empty.className = "empty-state";
+                empty.textContent = "No bookings found yet. Make your first reservation!";
+                bookingsList.appendChild(empty);
+                return;
+            }
+
+            bookings.forEach((booking, index) => {
+                const card = document.createElement("article");
+                card.className = "booking-item";
+
+                const title = document.createElement("h3");
+                title.textContent = booking.guestName || "Guest";
+
+                const room = document.createElement("p");
+                room.textContent = "Room: " + (booking.roomType || "—");
+
+                const dates = document.createElement("p");
+                dates.textContent =
+                    "Stay: " + (booking.checkIn || "—") +
+                    " → " + (booking.checkOut || "—");
+
+                const price = document.createElement("p");
+                const total = Number(booking.totalPrice);
+                price.textContent = "Total: ₹" +
+                    (Number.isFinite(total) ? total.toLocaleString("en-IN") : "—");
+
+                const paymentStatus = document.createElement("p");
+                paymentStatus.textContent = "Payment: " + (booking.paid ? "Paid (Demo)" : "Not paid");
+
+                card.append(title, room, dates, price, paymentStatus);
+
+                if (!booking.paid) {
+                   const payButton = document.createElement("button");
+                   payButton.textContent = "Pay Now (Demo)";
+                   payButton.addEventListener("click", async () => {
+                   try {
+                        const response = await fetch(`/api/bookings/${index}/pay`, {
+                        method: "POST"
+                    });
+
+                    if (!response.ok) {
+                        throw new Error("Payment failed");
+                    }
+
+                    alert("Demo payment successful!");
+                    loadBookings();
+                } catch (error) {
+                alert("Payment failed. Please try again.");
+            }
+        });
+
+        payButton.style.backgroundColor = "green";
+        payButton.style.color = "white";
+        payButton.style.padding = "10px";
+        payButton.style.border = "none";
+        payButton.style.borderRadius = "5px";
+        payButton.style.cursor = "pointer";
+
+        card.appendChild(payButton);
+    }
+
+        // Cancel Booking button
+    const cancelButton = document.createElement("button");
+    cancelButton.textContent = "Cancel Booking";
+    cancelButton.style.backgroundColor = "#dc3545";
+    cancelButton.style.color = "white";
+    cancelButton.style.padding = "10px";
+    cancelButton.style.marginTop = "10px";
+    cancelButton.style.border = "none";
+    cancelButton.style.borderRadius = "5px";
+    cancelButton.style.cursor = "pointer";
+
+    cancelButton.addEventListener("click", async () => {
+        if (!confirm("Are you sure you want to cancel this booking?")) {
+            return;
+        }
+
+        try {
+            const response = await fetch(`/api/bookings/${index}`, {
+                method: "DELETE"
+            });
+
+            if (!response.ok) {
+                throw new Error("Cancellation failed");
+            }
+
+            alert("Booking cancelled successfully!");
+            loadBookings();
+        } catch (error) {
+            alert("Unable to cancel booking. Please try again.");
+        }
+    });
+
+    card.appendChild(cancelButton);
+    bookingsList.appendChild(card);
+
+});
+        } catch (error) {
+            bookingsList.replaceChildren();
+
+            const failed = document.createElement("div");
+            failed.className = "empty-state";
+            failed.textContent =
+                "Could not load bookings. Please check that the server is running.";
+            bookingsList.appendChild(failed);
+        }
+    }
+
+    document.getElementById("refreshBookings").addEventListener("click", loadBookings);
+
+    updateDateLimits();
+</script>
+</body>
+</html>
